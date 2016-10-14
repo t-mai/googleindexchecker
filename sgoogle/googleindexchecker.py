@@ -17,6 +17,7 @@ from selenium.webdriver.common.proxy import *
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 BTN_XPATH = '//*[@id="tsf"]/div[2]/div[3]/center/input[1]'
+Q_XPATH = '//*[@id="lst-ib"]'
 TITLE_XPATH = '//div[@class="rc"]/h3/a'
 
 class URLIdexed(object):
@@ -87,7 +88,7 @@ class IndexChecker(object):
             print "  Start checking URL: %s" %url
             q = 'info:'+url
             try:
-                box = driver.wait.until(EC.presence_of_element_located((By.NAME, "q")))
+                box = driver.wait.until(EC.presence_of_element_located((By.XPATH, Q_XPATH)))
                 
                 #driver.find_element_by_name("q").clear()
                 print "    Found box"
@@ -112,11 +113,11 @@ class IndexChecker(object):
                 checkedurls.append(urlindexed)
                 no_url_checked = no_url_checked + 1
                 #time.sleep(randint(3, 5))
-                print "     Checked URL: %s in %f seconds" % (url, (datetime.now() - startTime).total_seconds())
+                print "     Checked URL: %s in %f miliseconds" % (url, (datetime.now() - startTime))
             except Exception as e:
                 print e
                 driver.quit()
-        print "All URLs are checked in: %f seconds" % ((datetime.now() - sTime).total_seconds())
+        print "All URLs are checked in: %f miliseconds" % ((datetime.now() - sTime))
         driver.quit()
 
         return checkedurls
