@@ -106,18 +106,18 @@ class IndexChecker(object):
                     if e:
                         indexed = 'Yes'
                 except Exception as e:
-                    print e
+                    print e.message
                     pass
                 
                 urlindexed = URLIdexed(url, indexed)
                 checkedurls.append(urlindexed)
                 no_url_checked = no_url_checked + 1
                 #time.sleep(randint(3, 5))
-                print "     Checked URL: %s in %f miliseconds" % (url, (datetime.now() - startTime))
+                print "     Checked""
             except Exception as e:
-                print e
+                print e.message
                 driver.quit()
-        print "All URLs are checked in: %f miliseconds" % ((datetime.now() - sTime))
+        print "All URLs are checked"
         driver.quit()
 
         return checkedurls
