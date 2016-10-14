@@ -97,6 +97,7 @@ class IndexChecker(object):
 
                 print "    Found button"
                 button.click()
+                print "    Button clicked"
                 indexed = 'No'
                 try:
                     #e = driver.find_element_by_xpath(TITLE_XPATH)
@@ -104,6 +105,7 @@ class IndexChecker(object):
                     if e:
                         indexed = 'Yes'
                 except Exception as e:
+                    print e
                     pass
                 
                 urlindexed = URLIdexed(url, indexed)
@@ -111,8 +113,8 @@ class IndexChecker(object):
                 no_url_checked = no_url_checked + 1
                 #time.sleep(randint(3, 5))
                 print "     Checked URL: %s in %f seconds" % (url, (datetime.now() - startTime).total_seconds())
-            except Exception:
-                print "Box or Button not found in google.com"
+            except Exception as e:
+                print e
                 driver.quit()
         print "All URLs are checked in: %f seconds" % ((datetime.now() - sTime).total_seconds())
         driver.quit()
