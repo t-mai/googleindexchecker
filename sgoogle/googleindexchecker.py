@@ -61,7 +61,7 @@ class IndexChecker(object):
         remoteHost="http://localhost:4444/wd/hub"
         driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX)
         driver.wait = WebDriverWait(driver, 5)
-        driver.get("http://www.google.com#q=start")
+        driver.get("http://www.google.com")
         return driver
     
     
