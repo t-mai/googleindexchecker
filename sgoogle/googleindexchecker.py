@@ -94,7 +94,7 @@ class IndexChecker(object):
                 print "    Found box"
                 box.clear()
                 box.send_keys(q)
-                button = driver.wait.until(EC.element_to_be_clickable((By.NAME, 'btnG')))
+                button = driver.wait.until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
 
                 print "    Found button"
                 button.click()
