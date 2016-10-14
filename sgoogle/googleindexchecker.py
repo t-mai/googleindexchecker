@@ -59,11 +59,11 @@ class IndexChecker(object):
         firefox_profile = webdriver.FirefoxProfile()
         firefox_profile.set_preference("network.proxy.type", 1)
         firefox_profile.set_preference("network.proxy.http", "localhost")
-        firefox_profile.set_preference("network.proxy.http_port", 8123)
+        firefox_profile.set_preference("network.proxy.http_port", 8118)
         firefox_profile.set_preference("network.proxy.no_proxies_on", "")
         firefox_profile.update_preferences()
         remoteHost="http://localhost:4444/wd/hub"
-        driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX)
+        driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX, browser_profile=firefox_profile)
         driver.wait = WebDriverWait(driver, 5)
         driver.get("http://www.google.com")
         ibox = driver.wait.until(EC.presence_of_element_located((By.NAME, 'q')))
