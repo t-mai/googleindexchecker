@@ -58,7 +58,7 @@ class IndexChecker(object):
         firefox_profile.set_preference("network.proxy.no_proxies_on", "")
         firefox_profile.update_preferences()
         remoteHost="http://localhost:4444/wd/hub"
-        driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX, browser_profile=firefox_profile)
+        driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX)
         driver.wait = WebDriverWait(driver, 5)
         driver.get("http://www.google.com")
         return driver
