@@ -61,7 +61,7 @@ class IndexChecker(object):
         remoteHost="http://localhost:4444/wd/hub"
         driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX)
         driver.wait = WebDriverWait(driver, 5)
-        driver.get("http://www.google.com")
+        driver.get("http://www.google.com#q=start")
         return driver
     
     
@@ -88,13 +88,13 @@ class IndexChecker(object):
             print "  Start checking URL: %s" %url
             q = 'info:'+url
             try:
-                box = driver.wait.until(EC.presence_of_element_located((By.XPATH, Q_XPATH)))
+                box = driver.wait.until(EC.presence_of_element_located((By.NAME, 'q')))
                 
                 #driver.find_element_by_name("q").clear()
                 print "    Found box"
                 box.clear()
                 box.send_keys(q)
-                button = driver.wait.until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
+                button = driver.wait.until(EC.element_to_be_clickable((By.NAME, 'btnG')))
 
                 print "    Found button"
                 button.click()
