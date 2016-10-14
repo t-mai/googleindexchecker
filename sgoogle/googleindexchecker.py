@@ -48,6 +48,10 @@ class IndexChecker(object):
             driver = webdriver.Firefox(firefox_profile=firefox_profile)
             driver.wait = WebDriverWait(driver, 5)
             driver.get("http://www.google.com")
+            ibox = driver.wait.until(EC.presence_of_element_located((By.NAME, 'q')))
+            ibox.send_keys("start")
+            ibutton = driver.wait.until(EC.element_to_be_clickable((By.NAME, 'btnK')))
+            ibutton.click()
         return driver
 
 
@@ -94,7 +98,7 @@ class IndexChecker(object):
                 print "    Found box"
                 box.clear()
                 box.send_keys(q)
-                button = driver.wait.until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
+                button = driver.wait.until(EC.element_to_be_clickable((By.NAME, 'btnG')))
 
                 print "    Found button"
                 button.click()
@@ -127,7 +131,7 @@ class IndexChecker(object):
         no_url_checked = 1
         no_driver_reset = 0
         sTime = datetime.now()
-        driver = self.init_driver(no_driver_reset)
+        driver = self.init_driver(1)
         print "Start checking URLs"
         for url in self.urls:
             if no_url_checked % 10 == 0:
