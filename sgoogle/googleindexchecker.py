@@ -88,10 +88,14 @@ class IndexChecker(object):
             q = 'info:'+url
             try:
                 box = driver.wait.until(EC.presence_of_element_located((By.NAME, "q")))
+                
                 #driver.find_element_by_name("q").clear()
+                print "    Found box"
                 box.clear()
                 box.send_keys(q)
                 button = driver.wait.until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
+
+                print "    Found button"
                 button.click()
                 indexed = 'No'
                 try:
