@@ -16,6 +16,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.proxy import *
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+BTN_XPATH = '//*[@id="tsf"]/div[2]/div[3]/center/input[1]'
 TITLE_XPATH = '//div[@class="rc"]/h3/a'
 
 class URLIdexed(object):
@@ -90,7 +91,7 @@ class IndexChecker(object):
                 #driver.find_element_by_name("q").clear()
                 box.clear()
                 box.send_keys(q)
-                button = driver.wait.until(EC.element_to_be_clickable((By.NAME, "btnG")))
+                button = driver.wait.until(EC.element_to_be_clickable((By.XPATH, BTN_XPATH)))
                 button.click()
                 indexed = 'No'
                 try:
