@@ -66,6 +66,10 @@ class IndexChecker(object):
         driver = webdriver.Remote(command_executor=remoteHost, desired_capabilities=DesiredCapabilities.FIREFOX)
         driver.wait = WebDriverWait(driver, 5)
         driver.get("http://www.google.com")
+        ibox = driver.wait.until(EC.presence_of_element_located((By.NAME, 'q')))
+        ibox.send_keys("start")
+        ibutton = driver.wait.until(EC.element_to_be_clickable((By.NAME, 'btnK')))
+        ibutton.click()
         return driver
     
     
