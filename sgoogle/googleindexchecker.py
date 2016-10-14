@@ -113,7 +113,7 @@ class IndexChecker(object):
                 checkedurls.append(urlindexed)
                 no_url_checked = no_url_checked + 1
                 #time.sleep(randint(3, 5))
-                print "     Checked""
+                print "     Checked"
             except Exception as e:
                 print e.message
                 driver.quit()
