@@ -41,7 +41,7 @@ def check_result():
         urlstr = file.read()
         urls = urlstr.split()
         if len(urls) > 200:
-            return render_template('index_check', error='The file contains a large number of URLs. The checking process may get block by Google. The fild should contains not exceed 200 URLs.')
+            return render_template('index_check.html', error='The file contains a large number of URLs. The checking process may get block by Google. The fild should contains not exceed 200 URLs.')
         else:
             checker = IndexChecker(urls, tld="co.jp", use_proxy=True)
             urlchecked = checker.check_solenium_remote()
